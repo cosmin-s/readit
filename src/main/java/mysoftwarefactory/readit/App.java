@@ -23,22 +23,22 @@ import java.util.Date;
  */
 @ComponentScan
 @EnableAutoConfiguration
-public class App 
+public class App
 {
-	
+
 	@Autowired
 	DataSource dataSource;
-	
+
 	@Bean
 	public JpaVendorAdapter jpaVendorAdapter(){
 		HibernateJpaVendorAdapter adapter = new HibernateJpaVendorAdapter();
 		adapter.setDatabase(Database.MYSQL);
 		adapter.setGenerateDdl(true);
-		
+
 		//adapter.setDatabasePlatform("org.hibernate.dialect.MySQL5Dialect");
 		return adapter;
 	}
-	
+
 	@Bean
 	public LocalContainerEntityManagerFactoryBean entityManagerFactory(JpaVendorAdapter jpaVendorAdapter){
 		LocalContainerEntityManagerFactoryBean emfb = new LocalContainerEntityManagerFactoryBean();
@@ -48,7 +48,7 @@ public class App
 		emfb.setPackagesToScan("mysoftwarefactory.readit.model");
 		return emfb;
 	}
-	
+
     public static void main( String[] args ){
     	//new SpringApplicationBuilder(App.class).profiles("production").run(args);
         //SpringApplication.run(App.class, args);
@@ -59,7 +59,6 @@ public class App
 		Post post = new Post();
 		post.setContent("what is the purpose of life?");
 		post.setCreated(new Date());
-		post.setId(1);
 
 		postRepository.saveAndFlush(post);
     }
