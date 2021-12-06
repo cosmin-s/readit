@@ -7,7 +7,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 
-@Profile("production")
+//@Profile("production")
 @Configuration
 public class AppConfig {
 
@@ -16,9 +16,9 @@ public class AppConfig {
         DriverManagerDataSource driverManagerDataSource = new DriverManagerDataSource();
         driverManagerDataSource.setDriverClassName("com.mysql.jdbc.Driver");
         driverManagerDataSource.setUrl("jdbc:mysql://localhost:3306/readit");
-        Properties prop = new Properties();
-        prop.setProperty("hibernate.hbm2ddl.auto", "uselessshit");
-        driverManagerDataSource.setConnectionProperties(prop);
+        /*Properties prop = new Properties();
+        prop.setProperty("hibernate.hbm2ddl.auto", "update");
+        driverManagerDataSource.setConnectionProperties(prop);*/
         driverManagerDataSource.setUsername("app");
         driverManagerDataSource.setPassword("pass");
         return driverManagerDataSource;

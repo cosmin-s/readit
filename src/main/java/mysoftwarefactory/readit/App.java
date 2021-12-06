@@ -59,7 +59,7 @@ public class App
 		Post post = new Post();
 		post.setContent("what is the purpose of life?");
 		post.setCreated(new Date());
-		post.setId(1);
+		//post.setId(1);
 
 		postRepository.saveAndFlush(post);
     }
