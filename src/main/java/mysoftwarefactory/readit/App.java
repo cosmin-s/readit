@@ -61,6 +61,15 @@ public class App
 		post.setCreated(new Date());
 		//post.setId(1);
 
-		postRepository.saveAndFlush(post);
+		Post fullPost = postRepository.saveAndFlush(post);
+
+		Post responsePost = new Post();
+		responsePost.setContent("what is the purpose of doing this?");
+		responsePost.setCreated(new Date());
+		responsePost.setParent(fullPost.getId());
+		//post.setId(1);
+
+		postRepository.saveAndFlush(responsePost);
+
     }
 }
