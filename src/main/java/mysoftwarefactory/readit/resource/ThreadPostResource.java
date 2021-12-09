@@ -15,7 +15,7 @@ public class ThreadPostResource
     ThreadPostRepository threadPostRepository;
 
     @RequestMapping(method = RequestMethod.GET)
-    public List<ThreadPost> retrieve()
+    public List<ThreadPost> retrieveAll()
     {
         return threadPostRepository.findAll();
     }
