@@ -61,8 +61,9 @@ public class App
 
 		ThreadPost thread = new ThreadPost();
 		thread.setSubject("What is this?");
-		thread.setContent("The short answer is whatever you want it to mean. The long answer is buried" +
+		thread.setContent("The short answer is whatever you want it to mean. The long answer is buried " +
 				"deep into your mind. And the reason for that lies in the whole history of life on this planet.");
+		thread.setCreated(new Date());
 		ThreadPost fullThread = threadPostRepository.saveAndFlush(thread);
 
 

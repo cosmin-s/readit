@@ -21,8 +21,8 @@ public class PostResource {
 	}
 	*/
 	@RequestMapping(method= RequestMethod.POST)
-	public void createNote(@RequestBody Post note){
-		postRepository.saveAndFlush(note);
+	public void createNote(@RequestBody Post post){
+		postRepository.saveAndFlush(post);
 	}
 
 }
