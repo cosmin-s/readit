@@ -14,12 +14,7 @@ public class PostResource {
 	
 	@Autowired
 	PostRepository postRepository;
-	
-	/*@RequestMapping(method=RequestMethod.GET)
-	public List<Note> getNotesByTag(@RequestParam String tag){
-		return jpaNoteRepository.getNotesByTag(tag);
-	}
-	*/
+
 	@RequestMapping(method= RequestMethod.POST)
 	public void createNote(@RequestBody Post post){
 		postRepository.saveAndFlush(post);

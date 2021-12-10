@@ -24,6 +24,13 @@ public class ThreadPost
     @JoinColumn(name = "thread_post_id")
     private List<Post> postList = new ArrayList<>();
 
+    @ManyToMany
+    @JoinTable(
+            name="THREAD_TAG",
+            joinColumns={@JoinColumn(name="THREAD_ID", referencedColumnName="ID")},
+            inverseJoinColumns={@JoinColumn(name="TAG_ID", referencedColumnName="ID")})
+    private List<Tag> tagList = new ArrayList<>();
+
     public Long getId() {
         return id;
     }
@@ -62,5 +69,13 @@ public class ThreadPost
 
     public void setPostList(List<Post> postList) {
         this.postList = postList;
+    }
+
+    public List<Tag> getTagList() {
+        return tagList;
+    }
+
+    public void setTagList(List<Tag> tagList) {
+        this.tagList = tagList;
     }
 }

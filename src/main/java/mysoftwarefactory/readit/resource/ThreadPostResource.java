@@ -1,6 +1,8 @@
 package mysoftwarefactory.readit.resource;
 
+import mysoftwarefactory.readit.dao.TagRepository;
 import mysoftwarefactory.readit.dao.ThreadPostRepository;
+import mysoftwarefactory.readit.model.Tag;
 import mysoftwarefactory.readit.model.ThreadPost;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -13,6 +15,9 @@ public class ThreadPostResource
 {
     @Autowired
     ThreadPostRepository threadPostRepository;
+
+    @Autowired
+    TagRepository tagRepository;
 
     @RequestMapping(method = RequestMethod.GET)
     public List<ThreadPost> retrieveAll()
@@ -29,6 +34,15 @@ public class ThreadPostResource
     @RequestMapping(method = RequestMethod.POST)
     public void create(@RequestBody ThreadPost threadPost)
     {
+        List<Tag> tags = threadPost.getTagList();
+        for (Tag tag: tags)
+        {
+            List<Tag> persistedTag = tagRepository.findByName(tag.getName());
+            if (persistedTag == null || persistedTag.isEmpty())
+                tagRepository.save(tag);
+            else
+                tag.setId(persistedTag.get(0).getId());
+        }
         threadPostRepository.saveAndFlush(threadPost);
     }
 }
